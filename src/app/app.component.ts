@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TodosComponent } from './todos/todos.component';
 import { Amplify } from 'aws-amplify';
 import outputs from '../../amplify_outputs.json';
+import { FileuploadComponent } from './file-upload/file-upload.component';
 
 Amplify.configure(outputs);
 
@@ -11,7 +11,7 @@ Amplify.configure(outputs);
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [RouterOutlet, TodosComponent],
+  imports: [RouterOutlet, FileuploadComponent],
 })
 export class AppComponent {
   title = 'amplify-angular-template';
