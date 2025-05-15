@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import * as Storage from 'aws-amplify/storage';
 
@@ -5,14 +6,14 @@ import * as Storage from 'aws-amplify/storage';
 @Component({
   selector: 'app-file-upload',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './file-upload.component.html',
   styleUrl: './file-upload.component.css'
 })
 export class FileuploadComponent {
 
   selectedFile?: File;
-
+  s3Files: string[] = [];
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -34,6 +35,19 @@ export class FileuploadComponent {
     } catch (error) {
       console.error('Error uploading file:', error);
     }
+  }
+
+  async fetchS3Files() {
+    try {
+      const result = await Storage.list(); 
+      this.s3Files = result.items.map(item => item.key.split("/")[1]); 
+    } catch (error) {
+      console.error('Error fetching files from S3:', error);
+    }
+  }
+
+  async ngOnInit() {
+    await this.fetchS3Files();
   }
 }
 

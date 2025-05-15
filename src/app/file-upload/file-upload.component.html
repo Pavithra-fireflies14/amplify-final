@@ -1,2 +1,12 @@
-<input type="file" (change)="onFileSelected($event)" />
-<button (click)="uploadFile()">Upload</button>
+<div>
+    <div>
+        <input type="file" (change)="onFileSelected($event)" />
+        <button (click)="uploadFile()">Upload</button>
+    </div>
+    <div>
+        <h3>Uploaded Files</h3>
+        <ul>
+          <li *ngFor="let file of s3Files">{{ file }}</li>
+        </ul>
+    </div>
+</div>
