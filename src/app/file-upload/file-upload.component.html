@@ -1,13 +1,27 @@
-<div>
-    <button (click)="handleSignOut()" class="signout">Sign Out</button>
-    <div>
-        <input type="file" (change)="onFileSelected($event)" />
-        <button (click)="uploadFile()">Upload</button>
+<div class="file-page-container">
+    <div class="top-bar">
+      <h2>Your File Dashboard</h2>
+      <button (click)="handleSignOut()" class="signout-btn">Sign Out</button>
     </div>
-    <div>
+  
+    <div class="card">
+      <div class="upload-box">
+        <input type="file" (change)="onFileSelected($event)" class="file-input" />
+        <button (click)="uploadFile()" class="upload-btn">Upload</button>
+      </div>
+  
+      <div class="file-list-section">
         <h3>Uploaded Files</h3>
-        <ul>
-          <li *ngFor="let file of s3Files">{{ file }}</li>
+        <ul *ngIf="s3Files.length; else noFiles">
+          <li *ngFor="let file of s3Files" class="file-item">
+            <span class="file-icon">📄</span>
+            <span class="file-name" (click)="downloadFile(file)">{{ file }}</span>
+          </li>
         </ul>
+        <ng-template #noFiles>
+          <p class="empty-msg">No files uploaded yet.</p>
+        </ng-template>
+      </div>
     </div>
-</div>
+  </div>
+  
