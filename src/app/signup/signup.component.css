@@ -1,0 +1,56 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .btn {
+    background-color: rgb(117, 81, 194);
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: rgb(74, 51, 124);
+  }
+  
+  .switch-text {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 4px;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .error-message {
+    color: tomato;
+  }

@@ -1,0 +1,10 @@
+<div class="card">
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+    <h2>Confirm Code</h2>
+    <input [(ngModel)]="code" placeholder="Confirmation Code" class="input" />
+    <button (click)="onConfirm()" class="btn">Confirm & Login</button>
+  
+    <button (click)="resendCode()" class="btn-secondary">Resend Code</button>
+  </div>
+  

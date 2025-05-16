@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import * as Storage from 'aws-amplify/storage';
+import { signOut } from "aws-amplify/auth"
+import { Router } from '@angular/router';
 
 'aws-amplify';
 @Component({
@@ -11,6 +13,8 @@ import * as Storage from 'aws-amplify/storage';
   styleUrl: './file-upload.component.css'
 })
 export class FileuploadComponent {
+
+  constructor(private router: Router) {}
 
   selectedFile?: File;
   s3Files: string[] = [];
@@ -49,5 +53,15 @@ export class FileuploadComponent {
   async ngOnInit() {
     await this.fetchS3Files();
   }
+
+  async handleSignOut() {
+    try {
+      await signOut();
+      this.router.navigate(['/']); // or your desired route
+    } catch (error) {
+      console.error('Error signing out: ', error);
+    }
+  }
+
 }
 

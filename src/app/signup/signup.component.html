@@ -1,0 +1,24 @@
+<div class="form-container">
+      
+    <div class="card">
+    <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+        </div>   
+      <h2>Sign Up</h2>
+      <input [(ngModel)]="email" placeholder="Username (Email)" class="input" />
+      <input [(ngModel)]="password" type="password" placeholder="Password" class="input" />
+      <button (click)="onSignup()" class="btn">Sign Up</button>
+      <p class="switch-text">
+        Already have an account?
+        <span style="color:rgb(117, 81, 194);cursor: pointer;font-weight: bolder;" [routerLink]="['/login']">Login</span>
+      </p>
+    </div>
+  
+    <!-- <div *ngIf="showConfirmation" class="card">
+     <div *ngIf="errorMessage" class="error-message"> {{errorMessage}}</div>
+      <h2>Confirm Sign Up</h2>
+      <input [(ngModel)]="code" placeholder="Confirmation Code" class="input" />
+      <button (click)="onConfirm()" class="btn">Confirm & Login</button>
+    </div> -->
+</div>
+  
